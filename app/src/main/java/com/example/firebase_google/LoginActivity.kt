@@ -32,12 +32,16 @@ class LoginActivity : AppCompatActivity() {
 // getting the value of gso inside the GoogleSigninClient
         mGoogleSignInClient= GoogleSignIn.getClient(this,gso)
 
-
+        binding.loginWithGoogle.setOnClickListener{
+            signInGoogle()
+        }
     }
 
     private  fun signInGoogle(){
-        val signInIntent: Intent =mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent,Req_Code)
+        val signInIntent = mGoogleSignInClient.signInIntent
+        startActivityForResult(
+            signInIntent,Req_Code
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
